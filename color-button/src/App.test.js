@@ -5,20 +5,24 @@ import { replaceCamelWithSpaces } from "./App";
 test("button has correct initial color", () => {
   render(<App />);
 
-  const colorBtn = screen.getByRole("button", { name: "Change to blue!" });
+  const colorBtn = screen.getByRole("button", {
+    name: "Change to Midnight Blue!"
+  });
 
-  expect(colorBtn).toHaveStyle({ backgroundColor: "red" });
+  expect(colorBtn).toHaveStyle({ backgroundColor: "MediumVioletRed" });
 
   fireEvent.click(colorBtn);
 
-  expect(colorBtn.textContent).toBe("Change to red!");
-  expect(colorBtn).toHaveStyle({ backgroundColor: "blue" });
+  expect(colorBtn.textContent).toBe("Change to Medium Violet Red!");
+  expect(colorBtn).toHaveStyle({ backgroundColor: "MidnightBlue" });
 });
 
 test("Button and checkbox init", () => {
   render(<App />);
 
-  const colorBtn = screen.getByRole("button", { name: "Change to blue!" });
+  const colorBtn = screen.getByRole("button", {
+    name: "Change to Midnight Blue!"
+  });
   expect(colorBtn).toBeEnabled();
 
   const checkbox = screen.getByRole("checkbox");
@@ -28,7 +32,9 @@ test("Button and checkbox init", () => {
 test("Disable and enable Color Btn via Checkbox", () => {
   render(<App />);
 
-  const colorBtn = screen.getByRole("button", { name: "Change to blue!" });
+  const colorBtn = screen.getByRole("button", {
+    name: "Change to Midnight Blue!"
+  });
   const checkbox = screen.getByRole("checkbox", { name: "Disable Button" });
 
   fireEvent.click(checkbox);
@@ -37,10 +43,10 @@ test("Disable and enable Color Btn via Checkbox", () => {
 
   fireEvent.click(checkbox);
   expect(colorBtn).toBeEnabled();
-  expect(colorBtn).toHaveStyle({ backgroundColor: "red" });
+  expect(colorBtn).toHaveStyle({ backgroundColor: "MediumVioletRed" });
 
   fireEvent.click(colorBtn);
-  expect(colorBtn).toHaveStyle({ backgroundColor: "blue" });
+  expect(colorBtn).toHaveStyle({ backgroundColor: "MidnightBlue" });
 
   fireEvent.click(checkbox);
   expect(colorBtn).toBeDisabled();
@@ -48,7 +54,7 @@ test("Disable and enable Color Btn via Checkbox", () => {
 
   fireEvent.click(checkbox);
   expect(colorBtn).toBeEnabled();
-  expect(colorBtn).toHaveStyle({ backgroundColor: "blue" });
+  expect(colorBtn).toHaveStyle({ backgroundColor: "MidnightBlue" });
 });
 
 describe("Spaces before camel-case capital letters", () => {
